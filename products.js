@@ -40,10 +40,10 @@ const products = [
   /* 4. **Concatenate Product Names**: */
   console.log(
     products.reduce((acc, { product }) => `${acc}${product}, `, '').slice(0, -2)
-);
+    );
 
  /* 5. **Find Extremes in Prices** */
-console.log(
+    console.log(
     (() => {
       // Filter out products with valid prices (non-empty and numeric)
       const validProducts = products.filter(({ price }) => price && !isNaN(parseFloat(price)));
@@ -68,5 +68,23 @@ console.log(
       return `Highest: ${maxProduct} ($${maxPrice}). Lowest: ${minProduct} ($${minPrice}).`;
     })()
   );
+
+  /* 6. **Object Transformation** */
+  console.log(
+    Object.entries(products).reduce((acc, [_, { product, price }]) => {
+      // Parse the price and check if it's valid and positive
+      const validPrice = parseFloat(price);
+  
+      // Only process valid products with a positive price
+      if (validPrice > 0 && product) {
+        // Add product to the accumulator with the desired structure
+        acc[product] = { name: product, cost: validPrice };
+      }
+  
+      return acc;
+    }, {})
+  );
+  
+
   
   
