@@ -34,5 +34,9 @@ const products = [
       .filter(({ price }) => price && !isNaN(price))  
       .reduce((total, { price }) => total + Number(price), 0)
   );
+
+  /* 4. **Concatenate Product Names**: */
+  console.log(products.reduce((acc, { product }) => `${acc}${product}, `, '').slice(0, -2));
+
   
   
