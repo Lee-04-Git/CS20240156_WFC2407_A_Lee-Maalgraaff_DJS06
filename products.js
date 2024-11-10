@@ -19,9 +19,20 @@ const products = [
     tea: '🍵'
   };
   
-  // Log each product with its emoji
-  products.forEach(({ product }) => {
-    const emoji = productEmojis[product] || '❓'; // Default emoji if product is not in the map
-    console.log(`${emoji} Product: ${product}`);
-  });
+  products.forEach(({ product }) => console.log(`${productEmojis[product]} Product: ${product}`));
+
+  /* 2. **Filter by Name Length** */
+  console.log(
+    products
+      .filter(({ product }) => product.length <= 5)
+      .map(({ product, price }) => `${product} - Price: $${price}`)
+  );
+
+  /* 3. **Price Manipulation** */
+  console.log(
+    products
+      .filter(({ price }) => price && !isNaN(price))  
+      .reduce((total, { price }) => total + Number(price), 0)
+  );
+  
   
