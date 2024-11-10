@@ -13,3 +13,12 @@ const products = [
   { product: 'coffee', price: 10 },
   { product: 'tea', price: '' },
 ]
+
+
+names.forEach((name, index) => console.log(`Name ${index + 1}: --> 👤${name}`));
+
+provinces.forEach((province, index) => console.log(`Province ${index + 1}: 🌍 ${province}`));
+
+names.forEach((name, index) => {
+  console.log(`👤 ${name} 🌍 (${provinces[index]})`);
+});
