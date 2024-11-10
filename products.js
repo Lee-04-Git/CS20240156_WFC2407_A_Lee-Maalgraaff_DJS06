@@ -19,7 +19,9 @@ const products = [
     tea: '🍵'
   };
   
-  console.log(products.map(({ product }) => `${productEmojis[product] || '❓'} Product: ${product}`).join('\n'));
+  console.log(
+    products.map(({ product }) => `${productEmojis[product] || '❓'} Product: ${product}`).join('\n')
+    );
 
   /* 2. **Filter by Name Length** */
   console.log(
@@ -36,7 +38,35 @@ const products = [
   );
 
   /* 4. **Concatenate Product Names**: */
-  console.log(products.reduce((acc, { product }) => `${acc}${product}, `, '').slice(0, -2));
+  console.log(
+    products.reduce((acc, { product }) => `${acc}${product}, `, '').slice(0, -2)
+);
 
+ /* 5. **Find Extremes in Prices** */
+console.log(
+    (() => {
+      // Filter out products with valid prices (non-empty and numeric)
+      const validProducts = products.filter(({ price }) => price && !isNaN(parseFloat(price)));
+      
+      // If there are no valid products, return a message
+      if (validProducts.length === 0) return "No valid products with prices.";
+    
+      // Find the highest and lowest prices
+      const prices = validProducts.map(({ price }) => parseFloat(price)); // Ensure the price is treated as a number
+      const maxPrice = Math.max(...prices);
+      const minPrice = Math.min(...prices);
+    
+      // Find the product with the highest price
+      const maxProductObj = validProducts.find(({ price }) => parseFloat(price) === maxPrice);
+      const maxProduct = maxProductObj ? maxProductObj.product : 'Unknown';
+    
+      // Find the product with the lowest price
+      const minProductObj = validProducts.find(({ price }) => parseFloat(price) === minPrice);
+      const minProduct = minProductObj ? minProductObj.product : 'Unknown';
+    
+      // Return the formatted result
+      return `Highest: ${maxProduct} ($${maxPrice}). Lowest: ${minProduct} ($${minPrice}).`;
+    })()
+  );
   
   
