@@ -15,7 +15,7 @@ const products = [
 ]
 
 
-/* ForEach Exercise */
+/* ForEach Exercise - Match Name with Province */
 // Loop through each name and log it with an emoji and index
 names.forEach((name, index) => console.log(`Name ${index + 1}: --> 👤${name}`));
 
@@ -27,6 +27,20 @@ names.forEach((name, index) => {
   console.log(`👤 ${name} 🌍 (${provinces[index]})`);
 });
 
-/* Map Method Exercise */
+/* Map Method Exercise 1 - Convert Provinces to Uppercase */
 const provincesInUpperCase = provinces.map(province => province.toUpperCase());
 console.log(provincesInUpperCase);
+
+/* Map Method Exercise 2 - Name Length */
+const nameLength = names.map(name => `The length of ${name} is ${name.length}`);
+console.log(nameLength);
+
+/* Sort Method */
+const sortedProvinces = [...provinces].sort();
+console.log("Provinces in alphabetical order:", sortedProvinces);
+
+/* Filter Method Exercise 1 */
+const provincesWithoutCape = provinces.filter(province => !province.includes('Cape'));
+console.log(`There are ${provincesWithoutCape.length} provinces without 'Cape' in their name.`);
+
+
