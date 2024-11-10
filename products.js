@@ -19,7 +19,7 @@ const products = [
     tea: '🍵'
   };
   
-  products.forEach(({ product }) => console.log(`${productEmojis[product]} Product: ${product}`));
+  console.log(products.map(({ product }) => `${productEmojis[product] || '❓'} Product: ${product}`).join('\n'));
 
   /* 2. **Filter by Name Length** */
   console.log(
